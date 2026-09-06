@@ -1,9 +1,13 @@
 #!/usr/bin/env node
 
-const childProcess = require("child_process")
-const fs = require("fs")
-const path = require("path")
-const os = require("os")
+import childProcess from "child_process"
+import fs from "fs"
+import path from "path"
+import os from "os"
+import { fileURLToPath } from "url"
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const forwardedSignals = ["SIGINT", "SIGTERM", "SIGHUP"]
 

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "telemetry": false,
+  "mcp": {
+    "unreal_mcp": {
+      "type": "remote",
+      "url": "http://127.0.0.1:8000/mcp",
+      "enabled": true
+    }
+  },
+  "provider": {
+    "vllm": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Corulean",
+      "options": {
+        "baseURL": "http://127.0.0.1:8228/v1"
+      },
+      "models": {
+        "/models/Qwen3.5-9B-NVFP4-FP8KV": {
+          "name": "Qwen3.5 9B NVFP4",
+          "reasoning": false,
+          "limit": {
+            "context": 16384,
+            "output": 2048
+          }
+        }
+      }
+    }
+  }
+}
