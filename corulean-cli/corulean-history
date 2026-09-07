@@ -1,0 +1,17 @@
+function corulean-history
+    corulean-cli db 'SELECT
+      strftime("%H:%M:%S", time_created/1000, "unixepoch", "localtime") AS time,
+      upper(json_extract(data,"$.tool")) AS tool,
+      CASE json_extract(data,"$.tool")
+        WHEN "bash" THEN json_extract(data,"$.state.input.command")
+        WHEN "read" THEN "Read " || json_extract(data,"$.state.input.filePath")
+        WHEN "write" THEN "Write " || json_extract(data,"$.state.input.filePath")
+        WHEN "glob" THEN "Find " || json_extract(data,"$.state.input.pattern") || " in " || COALESCE(json_extract(data,"$.state.input.path"), ".")
+        WHEN "webfetch" THEN "Fetch " || json_extract(data,"$.state.input.url")
+        WHEN "task" THEN COALESCE(json_extract(data,"$.state.input.description"), json_extract(data,"$.state.title"))
+        ELSE json_extract(data,"$.state.title")
+      END AS action
+    FROM part
+    WHERE json_extract(data,"$.tool") IS NOT NULL
+    ORDER BY time_created;'
+end

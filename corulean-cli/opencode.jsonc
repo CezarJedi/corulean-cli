@@ -11,17 +11,16 @@
   "provider": {
     "vllm": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "Corulean",
+      "name": "Corulean vLLM",
       "options": {
         "baseURL": "http://127.0.0.1:8228/v1"
       },
       "models": {
         "/models/Qwen3.5-9B-NVFP4-FP8KV": {
-          "name": "Qwen3.5 9B NVFP4",
-          "reasoning": false,
+          "name": "Corulean 1.0 9B NVFP4",
           "limit": {
             "context": 16384,
-            "output": 2048
+            "output": 4096
           }
         }
       }
