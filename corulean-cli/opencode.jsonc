@@ -19,8 +19,8 @@
         "/models/Qwen3.5-9B-NVFP4-FP8KV": {
           "name": "Corulean 1.0 9B NVFP4",
           "limit": {
-            "context": 16384,
-            "output": 4096
+            "context": 56344,
+            "output": 8192
           }
         }
       }
